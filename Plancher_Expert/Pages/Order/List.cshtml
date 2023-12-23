@@ -1,0 +1,42 @@
+﻿@page
+@model PlancherExpert.Pages.Order.ListModel
+@{
+	ViewData["title"] = "Order List";
+}
+
+<div class="order">
+	<div class="d-flex justify-content-between align-items-center mb-4">
+		<h2>Orders</h2>
+	</div>
+	<div>
+		<table class="table align-middle mb-0 bg-white">
+			<thead class="bg-light">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Client</th>
+					<th scope="col">Floor Cover</th>
+					<th scope="col">Width</th>
+					<th scope="col">Height</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var order in Model.Orders)
+				{
+					<tr>
+						<td scope="col">@order.Id</td>
+						<td scope="col">@order.ClientId</td>
+						<td scope="col">@order.ProductId</td>
+						<td scope="col">@order.Width</td>
+						<td scope="col">@order.Height</td>
+						<td scope="col" class="table-actions">
+							<a asp-area="" asp-page="view?id=@order.Id"><img src="~/images/icons/view.svg" alt="View" /></a>
+							<a asp-area="" asp-page="edit?id=@order.Id"><img src="~/images/icons/edit.svg" alt="Edit" /></a>
+							<a asp-area="" asp-page="delete?id=@order.Id"><img src="~/images/icons/delete.svg" alt="Delete" /></a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
